@@ -1,0 +1,72 @@
+﻿<Window x:Class="Wpf_MVVM_02_RgbHsvColorConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Wpf_MVVM_02_RgbHsvColorConverter"
+        Title="RGB/HSV Color Viewer" Height="500" Width="700">
+
+    <Window.Resources>
+        <local:HsvRgbViewModel x:Key="MyViewModel" Red="0" Green="127" Blue="255"/>
+    </Window.Resources>
+
+    <DockPanel LastChildFill="True" DataContext="{StaticResource MyViewModel}">
+        <GroupBox Header="RGB Model" DockPanel.Dock="Top" Margin="5">
+            <DockPanel LastChildFill="True">
+                <DockPanel LastChildFill="True" DockPanel.Dock="Top" Margin="5">
+                    <Label DockPanel.Dock="Left" Width="60">Red</Label>
+                    <TextBox Text="{Binding Red}"
+                        DockPanel.Dock="Right" Width="80" TextAlignment="Right"/>
+                    <Slider Value="{Binding Red, Mode=TwoWay}"
+                        DockPanel.Dock="Top" Minimum="0" Maximum="255"/>
+                </DockPanel>
+                <DockPanel LastChildFill="True" DockPanel.Dock="Top" Margin="5">
+                    <Label DockPanel.Dock="Left" Width="60">Green</Label>
+                    <TextBox Text="{Binding Green}"
+                        DockPanel.Dock="Right" Width="80" TextAlignment="Right"/>
+                    <Slider Value="{Binding Green, Mode=TwoWay}"
+                        DockPanel.Dock="Top" Minimum="0" Maximum="255"/>
+                </DockPanel>
+                <DockPanel LastChildFill="True" DockPanel.Dock="Top" Margin="5">
+                    <Label DockPanel.Dock="Left" Width="60">Blue</Label>
+                    <TextBox Text="{Binding Blue}"
+                        DockPanel.Dock="Right" Width="80" TextAlignment="Right"/>
+                    <Slider Value="{Binding Blue, Mode=TwoWay}"
+                        DockPanel.Dock="Top" Minimum="0" Maximum="255"/>
+                </DockPanel>
+            </DockPanel>
+        </GroupBox>
+
+        <GroupBox Header="HSV Model" DockPanel.Dock="Bottom" Margin="5">
+            <DockPanel LastChildFill="True">
+                <DockPanel LastChildFill="True" DockPanel.Dock="Top" Margin="5">
+                    <Label DockPanel.Dock="Left" Width="100">Hue</Label>
+                    <TextBox Text="{Binding Hue}"
+                        DockPanel.Dock="Right" Width="80" TextAlignment="Right"/>
+                    <Slider Value="{Binding Hue, Mode=TwoWay}"
+                        DockPanel.Dock="Top" Minimum="0" Maximum="360"/>
+                </DockPanel>
+                <DockPanel LastChildFill="True" DockPanel.Dock="Top" Margin="5">
+                    <Label DockPanel.Dock="Left" Width="100">Saturation</Label>
+                    <TextBox Text="{Binding Saturation}"
+                        DockPanel.Dock="Right" Width="80" TextAlignment="Right"/>
+                    <Slider Value="{Binding Saturation, Mode=TwoWay}"
+                        DockPanel.Dock="Top" Minimum="0" Maximum="100"/>
+                </DockPanel>
+                <DockPanel LastChildFill="True" DockPanel.Dock="Top" Margin="5">
+                    <Label DockPanel.Dock="Left" Width="100">Value</Label>
+                    <TextBox Text="{Binding Value}"
+                        DockPanel.Dock="Right" Width="80" TextAlignment="Right"/>
+                    <Slider Value="{Binding Value, Mode=TwoWay}"
+                        DockPanel.Dock="Top" Minimum="0" Maximum="100"/>
+                </DockPanel>
+            </DockPanel>
+        </GroupBox>
+
+        <GroupBox Header="Color" Margin="5">
+            <Canvas>
+                <Canvas.Background>
+                    <SolidColorBrush Color="{Binding Color}"/>
+                </Canvas.Background>
+            </Canvas>
+        </GroupBox>
+    </DockPanel>
+</Window>
